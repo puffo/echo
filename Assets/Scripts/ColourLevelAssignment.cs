@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Collections;
 
-
+[ RequireComponent (typeof (Renderer)) ]
 public class ColourLevelAssignment : MonoBehaviour {
 
 	public Material greenMat;
@@ -34,41 +34,45 @@ public class ColourLevelAssignment : MonoBehaviour {
 
 	}
 
-	void AssignMaterials(string colour, GameObject animal) {
-		Renderer[] animalRenderer = animal.GetComponentsInChildren<Renderer>() as Renderer[];
-		switch (colour)
-		{
-			case "Green":
-			foreach(Renderer i in animalRenderer)
-			{
-				i.sharedMaterial = greenMat;
-				//Debug.Log(i);
-				//Debug.Log("Green");
-			}
-				
-break;
-			case "Red" :
-foreach(Renderer i in animalRenderer)
-			{
-				i.sharedMaterial = redMat;
-			}
-break;
-			default:
-foreach(Renderer i in animalRenderer)
-			{
-				i.sharedMaterial = blueMat;
-			}
-			break;
-		}
-
-	}
-
 	public void SavePlayerLevel(int level) {
 
 	}
 
-	public void AssignNewTags()
-	{
+	/// Adjust the Material of a single GameObject
+	/// Uses either "Green" or "Red" to assign the materials
+	void AssignMaterials(string colour, GameObject animal) {
+		Renderer[] animalRenderer = animal.GetComponentsInChildren<Renderer>() as Renderer[];
+		
+		switch (colour)
+			{
+				case "Green":
+					foreach(Renderer i in animalRenderer)
+						{
+							i.sharedMaterial = greenMat;
+							//Debug.Log(i);
+							//Debug.Log("Green");
+						}					
+					break;
+				
+				case "Red":
+					foreach(Renderer i in animalRenderer)
+						{
+							i.sharedMaterial = redMat;
+						}
+					break;
+				
+				default:
+					foreach(Renderer i in animalRenderer)
+						{
+							i.sharedMaterial = blueMat;
+						}
+					break;
+			}
+	}
+
+
+
+	public void AssignNewTags() {
 		if (creatures.Length == 0)
 		{
 			creatures = FindGameObjectsWithLayer(8);
@@ -89,15 +93,15 @@ foreach(Renderer i in animalRenderer)
 	      	
 	      	switch (animal.name)
 	        {
-		        case "Lvl1Visual":
+		        case "Lvl1Real":
 		        	animal.tag = "Edible";
 		        	AssignMaterials("Green",animal);
 		            //print ("Why hello there good sir! Let me teach you about Trigonometry!");
 		            break;
-		        case "Lvl3Visual":
-		        case "Lvl2Visual":
-		        case "Lvl4Visual":
-		        case "Lvl5Visual":
+		        case "Lvl3Real":
+		        case "Lvl2Real":
+		        case "Lvl4Real":
+		        case "Lvl5Real":
 		        
 		        default:
 		        animal.tag = "Neutral";
@@ -110,18 +114,18 @@ foreach(Renderer i in animalRenderer)
       	{
 	      	switch (animal.name)
 	        {
-	        case "Lvl1Visual":
+	        case "Lvl1Real":
 	        	animal.tag = "Edible";
 	        	AssignMaterials("Green",animal);
 	            //print ("Why hello there good sir! Let me teach you about Trigonometry!");
 	            break;
-	        case "Lvl3Visual":
+	        case "Lvl3Real":
 	            animal.tag = "Aggressive";
 	            AssignMaterials("Red",animal);
 	            break;
-	        case "Lvl4Visual":
-	        case "Lvl2Visual":
-	        case "Lvl5Visual":
+	        case "Lvl4Real":
+	        case "Lvl2Real":
+	        case "Lvl5Real":
 	        default:
 	        animal.tag = "Neutral";
 	        AssignMaterials("Blue",animal);
@@ -133,21 +137,21 @@ foreach(Renderer i in animalRenderer)
         {
 	      	switch (animal.name)
 	        {
-		        case "Lvl1Visual":
-		        case "Lvl2Visual":
+		        case "Lvl1Real":
+		        case "Lvl2Real":
 		        	animal.tag = "Edible";
 		        	AssignMaterials("Green",animal);
 	            //print ("Why hello there good sir! Let me teach you about Trigonometry!");
 	            break;
 
-		        case "Lvl4Visual":
+		        case "Lvl4Real":
 	            animal.tag = "Aggressive";
 	            AssignMaterials("Red",animal);
 	            break;
 		        
 
-		        case "Lvl5Visual":
-		        case "Lvl3Visual":
+		        case "Lvl5Real":
+		        case "Lvl3Real":
 		        default:
 		        animal.tag = "Neutral";
 		        AssignMaterials("Blue",animal);
@@ -159,19 +163,19 @@ foreach(Renderer i in animalRenderer)
         {
 	      	switch (animal.name)
 	        {
-		        case "Lvl1Visual":
-		        case "Lvl2Visual":
-	          case "Lvl3Visual":
+		        case "Lvl1Real":
+		        case "Lvl2Real":
+	          case "Lvl3Real":
 		        	animal.tag = "Edible";
 		        	AssignMaterials("Green",animal);
 		            //print ("Why hello there good sir! Let me teach you about Trigonometry!");
 		          break;
-						case "Lvl5Visual":
+						case "Lvl5Real":
 	            animal.tag = "Aggressive";
 	            AssignMaterials("Red",animal);
 	            break;
 
-		        case "Lvl4Visual":
+		        case "Lvl4Real":
 		        default:
 			        animal.tag = "Neutral";
 			        AssignMaterials("Blue",animal);
@@ -184,16 +188,16 @@ foreach(Renderer i in animalRenderer)
         {
 	      	switch (animal.name)
 	        {
-	        case "Lvl1Visual":
-	        case "Lvl2Visual":
-          case "Lvl3Visual":
-	        case "Lvl4Visual":
+	        case "Lvl1Real":
+	        case "Lvl2Real":
+          case "Lvl3Real":
+	        case "Lvl4Real":
 	        	animal.tag = "Edible";
 	        	AssignMaterials("Green",animal);
 	            //print ("Why hello there good sir! Let me teach you about Trigonometry!");
 	            break;
 
-	        case "Lvl5Visual":
+	        case "Lvl5Real":
 	        default:
 		        animal.tag = "Neutral";
 		        AssignMaterials("Blue",animal);

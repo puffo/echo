@@ -14,15 +14,36 @@ public class Disposition : MonoBehaviour {
 
 	public int stateOfCreature = 1;
 	bool change = true;
+	Vector3 verticalOffset;
 
-	// Use this for initialization
-	void Start () {
-		// Set some stuff here
-	
+	void Start() {
+		verticalOffset = new Vector3(0.0f,10.0f,0.0f);
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+
+	/// Gizmo for creature disposition visually
+	void OnDrawGizmos() {
+		string myTag = gameObject.tag;
+
+		switch (myTag)
+		{
+			case "Edible":
+				Gizmos.color = Color.green;
+				break;
+
+			case "Aggressive":
+				Gizmos.color = Color.red;
+				break;
+
+			case "Neutral":
+				Gizmos.color = Color.blue;
+				break;
+
+			default:
+				Gizmos.color = Color.grey;
+				break;
+		}
+			
+		
+		Gizmos.DrawCube(transform.position + verticalOffset, Vector3.one);
 	}
 }
