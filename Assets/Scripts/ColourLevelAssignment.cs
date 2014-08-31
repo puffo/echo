@@ -24,11 +24,6 @@ public class ColourLevelAssignment : MonoBehaviour {
 		Invoke("AssignNewTags", 5.0f);
 		Invoke("AssignNewTags", 20.0f);
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 
 	void AssignLevels() {
 
@@ -37,40 +32,6 @@ public class ColourLevelAssignment : MonoBehaviour {
 	public void SavePlayerLevel(int level) {
 
 	}
-
-	/// Adjust the Material of a single GameObject
-	/// Uses either "Green" or "Red" to assign the materials
-	void AssignMaterials(string colour, GameObject animal) {
-		Renderer[] animalRenderer = animal.GetComponentsInChildren<Renderer>() as Renderer[];
-		
-		switch (colour)
-			{
-				case "Green":
-					foreach(Renderer i in animalRenderer)
-						{
-							i.sharedMaterial = greenMat;
-							//Debug.Log(i);
-							//Debug.Log("Green");
-						}					
-					break;
-				
-				case "Red":
-					foreach(Renderer i in animalRenderer)
-						{
-							i.sharedMaterial = redMat;
-						}
-					break;
-				
-				default:
-					foreach(Renderer i in animalRenderer)
-						{
-							i.sharedMaterial = blueMat;
-						}
-					break;
-			}
-	}
-
-
 
 	public void AssignNewTags() {
 
@@ -228,12 +189,46 @@ public class ColourLevelAssignment : MonoBehaviour {
 		}
 	}
 
+	/// Adjust the Material of a single GameObject
+	/// Uses either "Green" or "Red" to assign the materials
+	void AssignMaterials(string colour, GameObject animal) {
+		Renderer[] animalRenderer = animal.GetComponentsInChildren<Renderer>() as Renderer[];
+		
+		switch (colour)
+			{
+				case "Green":
+					foreach(Renderer i in animalRenderer)
+						{
+							i.sharedMaterial = greenMat;
+							//Debug.Log(i);
+							//Debug.Log("Green");
+						}					
+					break;
+				
+				case "Red":
+					foreach(Renderer i in animalRenderer)
+						{
+							i.sharedMaterial = redMat;
+						}
+					break;
+				
+				default:
+					foreach(Renderer i in animalRenderer)
+						{
+							i.sharedMaterial = blueMat;
+						}
+					break;
+			}
+	}
+
+	/// Function to refresh the creatures in memory in the 8th layer
 	void RefreshCreatures() {
 		goList.Clear();
 		goArray =  FindObjectsOfType(typeof(GameObject)) as GameObject[];
 		creatures = FindGameObjectsWithLayer(8);
 	}
 
+	/// Function to return objects in a layer
 	GameObject[] FindGameObjectsWithLayer (int layer) {
 		for (int i = 0; i < goArray.Length; i++) {
 		   if (goArray[i].layer == layer) {

@@ -1,8 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-/// If you want the creatures to be in the detection of Attract Creatures, they must be in layer 8!
 
+/// Attract enemies in layer 8.
+/// Assumes it is attached to the player.
+/// NOTE: If you want the creatures to be in the detection of Attract Creatures, they must be in layer 8!
 public class AttractCreatures : MonoBehaviour {
 
 	public float attractMethodFireTime = 1.0F;
@@ -14,11 +16,6 @@ public class AttractCreatures : MonoBehaviour {
 	void Start () {
 
 		InvokeRepeating ("MakeANoise", 5.0f, attractMethodFireTime);
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
 	
 	}
 
