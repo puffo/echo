@@ -42,7 +42,7 @@ public class EnergyLevelScale : MonoBehaviour {
 	public bool TakeEnergy() {
 		if ((energyLevel - energyCost) < 0)
 		{
-			Debug.Log("Not enough energy");
+			//Debug.Log("Not enough energy");
 			return false; 
 		}
 		else 

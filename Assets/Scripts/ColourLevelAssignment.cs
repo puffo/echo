@@ -10,7 +10,7 @@ public class ColourLevelAssignment : MonoBehaviour {
 	public Material redMat;
 
   public int playerLevel = 2;
-  public GameObject[] creatures;
+  GameObject[] creatures;
 	GameObject[] goArray;
 	List<GameObject> goList;
 
@@ -73,17 +73,10 @@ public class ColourLevelAssignment : MonoBehaviour {
 
 
 	public void AssignNewTags() {
-		if (creatures.Length == 0)
-		{
-			creatures = FindGameObjectsWithLayer(8);
-			//Debug.Log(creatures);
-		}
-		else
-		{
-			creatures = creatures;
-		}
 
-		Debug.Log("assigning tags");
+		RefreshCreatures();
+
+		Debug.Log("assigning tags to " + creatures.Length + " creatures");
 
 		foreach (GameObject animal in creatures) 
       { 
@@ -235,8 +228,11 @@ public class ColourLevelAssignment : MonoBehaviour {
 		}
 	}
 
-	// Thanks to 3agle from
-	//http://answers.unity3d.com/questions/179310/how-to-find-all-objects-in-specific-layer.html
+	void RefreshCreatures() {
+		goList.Clear();
+		goArray =  FindObjectsOfType(typeof(GameObject)) as GameObject[];
+		creatures = FindGameObjectsWithLayer(8);
+	}
 
 	GameObject[] FindGameObjectsWithLayer (int layer) {
 		for (int i = 0; i < goArray.Length; i++) {
