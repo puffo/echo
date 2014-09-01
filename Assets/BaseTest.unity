@@ -4254,6 +4254,10 @@ Prefab:
       propertyPath: field of view
       value: 45
       objectReference: {fileID: 0}
+    - target: {fileID: 11400018, guid: 9d4133d5d30b644bd87802a347eaccbe, type: 2}
+      propertyPath: heightInterval
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9d4133d5d30b644bd87802a347eaccbe, type: 2}
   m_RootGameObject: {fileID: 1980550633}
@@ -5978,7 +5982,7 @@ MonoBehaviour:
   greenMat: {fileID: 2100000, guid: 86b4f5e8b71ce8648bf6bf0c95c5bd9b, type: 2}
   blueMat: {fileID: 2100000, guid: e7532800854155d4a91e4f6c4516c59d, type: 2}
   redMat: {fileID: 2100000, guid: e59b60c27c09912429a799c5dcaa80f3, type: 2}
-  playerLevel: 2
+  playerLevel: 1
 --- !u!1 &1265243187
 GameObject:
   m_ObjectHideFlags: 0
@@ -8790,7 +8794,7 @@ MonoBehaviour:
   _colourLevelAssignment: {fileID: 1257099310}
   growthIndicator: {fileID: 1087316515}
   maxHeight: 50
-  heightInterval: 3
+  heightInterval: 10
   minSize: 2
 --- !u!114 &1980550640
 MonoBehaviour:

@@ -9,7 +9,7 @@ public class ColourLevelAssignment : MonoBehaviour {
 	public Material blueMat;
 	public Material redMat;
 
-  public int playerLevel = 2;
+  public int playerLevel = 1;
   GameObject[] creatures;
 	GameObject[] goArray;
 	List<GameObject> goList;
@@ -29,6 +29,21 @@ public class ColourLevelAssignment : MonoBehaviour {
 
 	}
 
+	void MakeEdible(GameObject animal) {
+		animal.tag = "Edible";
+  	AssignMaterials("Green",animal);
+	}
+
+	void MakeNeutral(GameObject animal) {
+		animal.tag = "Neutral";
+  	AssignMaterials("Blue",animal);
+	}
+
+	void MakeAggresive(GameObject animal) {
+		animal.tag = "Aggressive";
+		AssignMaterials("Red",animal);
+	}
+
 	public void SavePlayerLevel(int level) {
 
 	}
@@ -36,7 +51,6 @@ public class ColourLevelAssignment : MonoBehaviour {
 	public void AssignNewTags() {
 
 		RefreshCreatures();
-
 		Debug.Log("assigning tags to " + creatures.Length + " creatures");
 
 		foreach (GameObject animal in creatures) 
@@ -48,19 +62,11 @@ public class ColourLevelAssignment : MonoBehaviour {
 	      	switch (animal.name)
 	        {
 		        case "Lvl1Real":
-		        	animal.tag = "Edible";
-		        	AssignMaterials("Green",animal);
-		            //print ("Why hello there good sir! Let me teach you about Trigonometry!");
-		            break;
-		        case "Lvl3Real":
-		        case "Lvl2Real":
-		        case "Lvl4Real":
-		        case "Lvl5Real":
-		        
+		        	MakeEdible(animal);
+	            break;
 		        default:
-		        animal.tag = "Neutral";
-		        AssignMaterials("Blue",animal);
-		            break;
+			        MakeNeutral(animal);
+	            break;
 	        }
 	      }
 
@@ -68,21 +74,14 @@ public class ColourLevelAssignment : MonoBehaviour {
       	{
 	      	switch (animal.name)
 	        {
-	        case "Lvl1Real":
-	        	animal.tag = "Edible";
-	        	AssignMaterials("Green",animal);
-	            //print ("Why hello there good sir! Let me teach you about Trigonometry!");
+	          case "Lvl2Real":
+	          	MakeEdible(animal);
+	          	break;
+		        case "Lvl3Real":
+	            MakeAggresive(animal);
 	            break;
-	        case "Lvl3Real":
-	            animal.tag = "Aggressive";
-	            AssignMaterials("Red",animal);
-	            break;
-	        case "Lvl4Real":
-	        case "Lvl2Real":
-	        case "Lvl5Real":
-	        default:
-	        animal.tag = "Neutral";
-	        AssignMaterials("Blue",animal);
+		        default:
+			        MakeNeutral(animal);
 	            break;
 	        }
 	      }
@@ -91,25 +90,17 @@ public class ColourLevelAssignment : MonoBehaviour {
         {
 	      	switch (animal.name)
 	        {
-		        case "Lvl1Real":
-		        case "Lvl2Real":
-		        	animal.tag = "Edible";
-		        	AssignMaterials("Green",animal);
-	            //print ("Why hello there good sir! Let me teach you about Trigonometry!");
+		        case "Lvl3Real":
+		        	MakeEdible(animal);
 	            break;
 
 		        case "Lvl4Real":
-	            animal.tag = "Aggressive";
-	            AssignMaterials("Red",animal);
+		        	MakeAggresive(animal);
 	            break;
 		        
-
-		        case "Lvl5Real":
-		        case "Lvl3Real":
 		        default:
-		        animal.tag = "Neutral";
-		        AssignMaterials("Blue",animal);
-		            break;
+			        MakeNeutral(animal);
+	            break;
 	        }
 	      }
 
@@ -117,23 +108,17 @@ public class ColourLevelAssignment : MonoBehaviour {
         {
 	      	switch (animal.name)
 	        {
-		        case "Lvl1Real":
-		        case "Lvl2Real":
-	          case "Lvl3Real":
-		        	animal.tag = "Edible";
-		        	AssignMaterials("Green",animal);
-		            //print ("Why hello there good sir! Let me teach you about Trigonometry!");
+	          case "Lvl4Real":
+	          	MakeEdible(animal);
 		          break;
+
 						case "Lvl5Real":
-	            animal.tag = "Aggressive";
-	            AssignMaterials("Red",animal);
+							MakeAggresive(animal);
 	            break;
 
-		        case "Lvl4Real":
 		        default:
-			        animal.tag = "Neutral";
-			        AssignMaterials("Blue",animal);
-			            break;
+		        	MakeNeutral(animal);
+	            break;
 	        }
 				}
 
@@ -142,19 +127,14 @@ public class ColourLevelAssignment : MonoBehaviour {
         {
 	      	switch (animal.name)
 	        {
-	        case "Lvl1Real":
-	        case "Lvl2Real":
-          case "Lvl3Real":
-	        case "Lvl4Real":
-	        	animal.tag = "Edible";
-	        	AssignMaterials("Green",animal);
-	            //print ("Why hello there good sir! Let me teach you about Trigonometry!");
+	        	case "Lvl5Real":
+		        	animal.tag = "Edible";
+		        	AssignMaterials("Green",animal);
 	            break;
 
-	        case "Lvl5Real":
-	        default:
-		        animal.tag = "Neutral";
-		        AssignMaterials("Blue",animal);
+		        default:
+			        animal.tag = "Neutral";
+			        AssignMaterials("Blue",animal);
 	            break;
 	        }
 	      }
@@ -163,10 +143,9 @@ public class ColourLevelAssignment : MonoBehaviour {
         {
 	      	switch (animal.name)
 	        {
-
-	        default:
-            animal.tag = "Edible";
-	        	AssignMaterials("Green",animal);
+		        default:
+	            animal.tag = "Edible";
+		        	AssignMaterials("Green",animal);
 	            break;
 	        }
 	      }
