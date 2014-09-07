@@ -91,15 +91,17 @@ public class GrowthController : MonoBehaviour {
 		{
 			IndicateShrink();
 			Vector3 currentPosition = _controller.transform.position;
-			currentPosition.y -= heightInterval - 2;
-			_controller.transform.position = currentPosition;
-			_controller.height -= heightInterval ;
 
-			_hitbox.transform.localScale -= new Vector3(heightInterval/4, heightInterval/2, heightInterval/4);
+			if (currentPosition.y - heightInterval + minSize > 0) {
+				_controller.transform.position = currentPosition;
+				_controller.height -= heightInterval ;
 
-			_colourLevelAssignment.LevelDown();
+				_hitbox.transform.localScale -= new Vector3(heightInterval/4, heightInterval/2, heightInterval/4);
 
-			SizeTimeout();
+				_colourLevelAssignment.LevelDown();
+
+				SizeTimeout();
+			}
 		}
 	}
 
