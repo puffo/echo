@@ -87,15 +87,21 @@ public class HabitatSpawn : MonoBehaviour {
 
 		for (int i = 1; i <= numberOfObjects; i++)
 		{
+			float val = Random.Range(0, 360);
+			RandomPause(val);
 //			Debug.Log(GlobalBounds.RandomXBound());
 			Vector3 position = new Vector3(GlobalBounds.RandomXBound(), spawnHeight, GlobalBounds.RandomZBound());
 			//Debug.Log(position);
 
-			float val = Random.Range(0, 360);
+			
 
     	Instantiate(objectToSpawn, position, Quaternion.Euler(0,val,0));
 		}
 
+	}
+
+	IEnumerator RandomPause(float timeToWait) {
+		yield return new WaitForSeconds(timeToWait);
 	}
 
 }

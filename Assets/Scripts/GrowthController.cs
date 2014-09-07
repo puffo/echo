@@ -14,10 +14,12 @@ public class GrowthController : MonoBehaviour {
 	GameObject _hitbox;
 
 	public GameObject growthIndicator;
+	public Camera playerCamera;
 
 	public float maxHeight = 50.0f;
 	public float heightInterval = 20.0f;
 	public float minSize = 2.0f;
+	public float FOVDifference = 7.0f;
 
 	bool gameOver = false;
 	bool canChangeSize = true;
@@ -59,9 +61,7 @@ public class GrowthController : MonoBehaviour {
 
 		if (canChangeSize)
 		{
-			Debug.Log("Trying to Grow...");
 			IndicateGrowth();
-
 			
 			Vector3 currentPosition = _controller.transform.position;
 			
@@ -85,7 +85,7 @@ public class GrowthController : MonoBehaviour {
 	public void Shrink() {
 		if (canChangeSize)
 		{
-			Debug.Log("Trying to Shrink...");
+			IndicateShrink();
 			Vector3 currentPosition = _controller.transform.position;
 			currentPosition.y -= heightInterval - 2;
 			_controller.transform.position = currentPosition;
@@ -141,6 +141,13 @@ public class GrowthController : MonoBehaviour {
 	}
 
 	void IndicateGrowth() {
+		Debug.Log("Trying to Grow...");
+		playerCamera.fieldOfView -= FOVDifference;
 		growthIndicator.particleSystem.Play();
+	}
+
+	void IndicateShrink() {
+		Debug.Log("Trying to Shrink...");
+		playerCamera.fieldOfView += FOVDifference;
 	}
 }
