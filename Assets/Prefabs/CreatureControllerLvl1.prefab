@@ -330,6 +330,7 @@ Animation:
   serializedVersion: 3
   m_Animation: {fileID: 7400000, guid: 6e95efed083e2409b903543e5aa7f7cd, type: 3}
   m_Animations:
+  - {fileID: 7400002, guid: 6e95efed083e2409b903543e5aa7f7cd, type: 3}
   - {fileID: 7400000, guid: 6e95efed083e2409b903543e5aa7f7cd, type: 3}
   m_WrapMode: 0
   m_PlayAutomatically: 1
@@ -401,10 +402,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60e52185fb2114fb4b642289f237acd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  creatureAnimator: {fileID: 11100002}
   creatureHeight: 1.5
   level: 1
   speed: 5
   changeTime: 5
+  randomTimeRange: 2
   maxRotSpeed: 200
 --- !u!114 &11400004
 MonoBehaviour:

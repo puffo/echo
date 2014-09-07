@@ -12,6 +12,8 @@ public class MobileCreature : MonoBehaviour {
 	Disposition _disposition;
 	Transform _transform;
 
+	public Animation creatureAnimator;
+
 	float gravity = 20f;
 	
 	float minTime = 0.1f;
@@ -29,6 +31,7 @@ public class MobileCreature : MonoBehaviour {
 
 	public float speed = 5f;
 	public float changeTime = 5.0f;
+	public float randomTimeRange = 2.0f;
 	public float maxRotSpeed = 200.0f;
 
 	Vector3 moveDirection;
@@ -45,7 +48,9 @@ public class MobileCreature : MonoBehaviour {
  		target = GetTarget();
 	   	
 		// Repeat this every changeTime 
-	   InvokeRepeating ("NewTarget",0.01f,changeTime);
+		float timeTopRange = changeTime + randomTimeRange;
+		float timeBottomRange = changeTime - randomTimeRange;
+	  InvokeRepeating ("NewTarget",0.01f,changeTime + Random.Range(timeBottomRange, timeTopRange ) );
 	}
 	
 	// Update is called once per frame
@@ -56,9 +61,11 @@ public class MobileCreature : MonoBehaviour {
 		
     if (Vector3.Distance(_transform.position,target)>range) {
       	Move();
+      	ChangeAnimation("walk");
       	//animation.CrossFade("walk");
       }
     else { 
+    	ChangeAnimation("idle");
     	//animation.CrossFade ("idle");
     }
 	}
@@ -99,7 +106,7 @@ public class MobileCreature : MonoBehaviour {
 
 	void TargetPlayer( Vector3 player) {
 		if ((_disposition != null) && (_disposition.stateOfCreature == 2)){
-			Debug.Log("Now he's angry!");
+			Debug.Log("A " + this.name + " creature is angry with the player!");
 			target = player;
 			gettingBored = true;
 			Invoke ("GetBored",timeTillBored);
@@ -109,6 +116,12 @@ public class MobileCreature : MonoBehaviour {
 	void GetBored() {
 		gettingBored = false;
 		target = GetTarget();
+	}
+
+	void ChangeAnimation(string animationName) {
+		//Debug.Log(creatureAnimator.animation.Animations);
+		//Debug.Log(animationName);
+		creatureAnimator.CrossFade(animationName);
 	}
 
 	public void Die() {

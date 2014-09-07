@@ -21,6 +21,9 @@ public class GrowthController : MonoBehaviour {
 	public float minSize = 2.0f;
 	public float FOVDifference = 7.0f;
 
+	public float FOVMin = 40.0f;
+	public float FOVMax = 80.0f;
+
 	bool gameOver = false;
 	bool canChangeSize = true;
 //	Camera _camera;
@@ -29,6 +32,7 @@ public class GrowthController : MonoBehaviour {
 	void Start () {
 		_controller = GetComponent<CharacterController>();
 		_hitbox = transform.Find("HitBox").gameObject;
+		playerCamera.fieldOfView = FOVMin;
 		//_camera = GetComponentInChildren<Camera>();
 	}
 	
@@ -142,12 +146,32 @@ public class GrowthController : MonoBehaviour {
 
 	void IndicateGrowth() {
 		Debug.Log("Trying to Grow...");
-		playerCamera.fieldOfView -= FOVDifference;
 		growthIndicator.particleSystem.Play();
+		AdjustFOVUp();
 	}
 
 	void IndicateShrink() {
 		Debug.Log("Trying to Shrink...");
-		playerCamera.fieldOfView += FOVDifference;
+		AdjustFOVDown();
 	}
+
+	void AdjustFOVUp() {
+		Debug.Log(playerCamera.fieldOfView + " CAMERA and "+FOVMax + " MAX");
+		if (playerCamera.fieldOfView < FOVMax) {
+			playerCamera.fieldOfView += FOVDifference;
+		}
+		else {
+			Debug.Log("Max FOV Reached, cannot increase FOV");
+		}
+	}
+
+	void AdjustFOVDown() {
+		if (playerCamera.fieldOfView > FOVMin) {
+			playerCamera.fieldOfView -= FOVDifference;
+		}
+		else {
+			Debug.Log("Min FOV Reached. Did not decrease FOV");
+		}
+	}
+
 }
