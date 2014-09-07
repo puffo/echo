@@ -18,11 +18,12 @@ public class ColourLevelAssignment : MonoBehaviour {
 	void Start () {
 		goList = new List<GameObject>();
 		goArray = FindObjectsOfType(typeof(GameObject)) as GameObject[];
-		Invoke("AssignNewTags", 30.0f);
-		Invoke("AssignNewTags", 10.0f);
-		Invoke("AssignNewTags", 15.0f);
-		Invoke("AssignNewTags", 5.0f);
-		Invoke("AssignNewTags", 20.0f);
+		Invoke("AssignNewTags", 1.0f);
+		Invoke("AssignNewTags", 31.0f);
+		Invoke("AssignNewTags", 11.0f);
+		Invoke("AssignNewTags", 16.0f);
+		Invoke("AssignNewTags", 6.0f);
+		Invoke("AssignNewTags", 21.0f);
 	}
 
 	void AssignLevels() {

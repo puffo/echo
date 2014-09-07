@@ -56,8 +56,9 @@ public class MobileCreature : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-		if(change)
-    	target = GetTarget ();
+		if(change) {
+    	target = GetTarget();
+    }
 		
     if (Vector3.Distance(_transform.position,target)>range) {
       	Move();
@@ -72,7 +73,7 @@ public class MobileCreature : MonoBehaviour {
 
 	Vector3 GetTarget()
 	{
-  		return new Vector3(GlobalBounds.RandomXBound(),creatureHeight,GlobalBounds.RandomZBound());
+  		return new Vector3(GlobalBounds.PathedX(),creatureHeight,GlobalBounds.PathedZ());
 	}
 
 	void NewTarget()
@@ -107,6 +108,7 @@ public class MobileCreature : MonoBehaviour {
 	void TargetPlayer( Vector3 player) {
 		if ((_disposition != null) && (_disposition.stateOfCreature == 2)){
 			Debug.Log("A " + this.name + " creature is angry with the player!");
+			ChangeAnimation("attack");
 			target = player;
 			gettingBored = true;
 			Invoke ("GetBored",timeTillBored);

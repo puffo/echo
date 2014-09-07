@@ -30,6 +30,14 @@ public class GlobalBounds : MonoBehaviour {
 		return Random.Range(-landscapeBounds.z/2,landscapeBounds.z/2);
 	}
 
+	public static float PathedX() {
+		return Random.Range(-landscapeBounds.x/2,landscapeBounds.x/2);
+	}
+
+	public static float PathedZ() {
+		return Random.Range(-landscapeBounds.z/2,landscapeBounds.z/2);	
+	}
+
 
 
 }
