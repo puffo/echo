@@ -106,7 +106,7 @@ public class GrowthController : MonoBehaviour {
 	}
 
 	void CheckScreenLock() {
-		 if (Input.GetKey(KeyCode.Escape))
+		 if (Input.GetKey(KeyCode.Escape) || gameOver)
      	Screen.lockCursor = false;
      else
      	Screen.lockCursor = true;
@@ -115,12 +115,12 @@ public class GrowthController : MonoBehaviour {
 	void OnGUI () {
 		if (gameOver)
 		{
-			//GUI.Box(new Rect(10,10,100,90), "You are no longer a part of this world...");
+			GUI.Box(new Rect(10,10,200,200), "You are the dominant creature of this world...");
 
-			//if(GUI.Button(new Rect(20,40,80,20), "Restart")) {
-			//	gameOver = false;
-			//	Application.LoadLevel(0);
-			//}
+			if(GUI.Button(new Rect(20,40,80,20), "Restart")) {
+				gameOver = false;
+				Application.LoadLevel(0);
+			}
 		}
 
 		// Make a background box
@@ -164,6 +164,7 @@ public class GrowthController : MonoBehaviour {
 		}
 		else {
 			Debug.Log("Max FOV Reached, cannot increase FOV");
+			gameOver = true;
 		}
 	}
 

@@ -30,7 +30,7 @@ public class MobileCreature : MonoBehaviour {
 	public int level = 0;
 
 	public float speed = 5f;
-	public float changeTime = 5.0f;
+	public float changeTime = 3.0f;
 	public float randomTimeRange = 2.0f;
 	public float maxRotSpeed = 200.0f;
 

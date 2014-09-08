@@ -200,7 +200,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.04204178, y: 0, z: 17.0620365}
+  m_LocalPosition: {x: 1.04204178, y: -.360000014, z: -138.892105}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400010}
@@ -705,7 +705,7 @@ MonoBehaviour:
   creatureHeight: 1
   level: 5
   speed: 4
-  changeTime: 10
+  changeTime: 7
   randomTimeRange: 2
   maxRotSpeed: 20
 --- !u!114 &11400002

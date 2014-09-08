@@ -406,7 +406,7 @@ MonoBehaviour:
   creatureHeight: 1.5
   level: 1
   speed: 5
-  changeTime: 5
+  changeTime: 4
   randomTimeRange: 2
   maxRotSpeed: 200
 --- !u!114 &11400004
