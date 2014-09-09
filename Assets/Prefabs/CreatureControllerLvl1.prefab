@@ -405,7 +405,7 @@ MonoBehaviour:
   creatureAnimator: {fileID: 11100002}
   creatureHeight: 1.5
   level: 1
-  speed: 5
+  speed: 4
   changeTime: 4
   randomTimeRange: 2
   maxRotSpeed: 200

@@ -32,7 +32,7 @@ public class GrowthController : MonoBehaviour {
 	void Start () {
 		_controller = GetComponent<CharacterController>();
 		_hitbox = transform.Find("HitBox").gameObject;
-		playerCamera.fieldOfView = FOVMin;
+		playerCamera.fieldOfView = FOVMax;
 		//_camera = GetComponentInChildren<Camera>();
 	}
 	
@@ -149,12 +149,12 @@ public class GrowthController : MonoBehaviour {
 	void IndicateGrowth() {
 		Debug.Log("Trying to Grow...");
 		growthIndicator.particleSystem.Play();
-		AdjustFOVUp();
+		AdjustFOVDown();
 	}
 
 	void IndicateShrink() {
 		Debug.Log("Trying to Shrink...");
-		AdjustFOVDown();
+		AdjustFOVUp();
 	}
 
 	void AdjustFOVUp() {
